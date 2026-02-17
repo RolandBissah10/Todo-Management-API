@@ -1,0 +1,74 @@
+name: CI – Build & Test
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    name: Build, Test & Coverage
+    runs-on: ubuntu-latest
+
+    steps:
+      # ── 1. Source ────────────────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ── 2. Java runtime ──────────────────────────────────────────────────────
+      - name: Set up JDK 23 (Temurin)
+        uses: actions/setup-java@v4
+        with:
+          java-version: '23'
+          distribution: 'temurin'
+          cache: maven
+
+      # ── 3. Compile ───────────────────────────────────────────────────────────
+      - name: Compile
+        run: mvn --batch-mode clean compile
+
+      # ── 4. Unit & integration tests ──────────────────────────────────────────
+      - name: Run unit & integration tests
+        run: mvn --batch-mode test
+
+      # ── 5. Coverage report (generated automatically via JaCoCo prepare-agent)─
+      - name: Generate JaCoCo coverage report
+        if: always()
+        run: mvn --batch-mode jacoco:report
+
+      # ── 6. Publish test results as GitHub check ──────────────────────────────
+      - name: Publish test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-test-results
+          path: target/surefire-reports/
+          retention-days: 14
+
+      # ── 7. Publish HTML coverage report as artifact ──────────────────────────
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-coverage-report
+          path: target/site/jacoco/
+          retention-days: 14
+
+      # ── 8. Summary ───────────────────────────────────────────────────────────
+      - name: Print build summary
+        if: always()
+        run: |
+          echo "========================================="
+          echo "  Build Summary"
+          echo "========================================="
+          echo "  Branch : ${{ github.ref_name }}"
+          echo "  Commit : ${{ github.sha }}"
+          echo "  Java   : 23 (Temurin)"
+          echo "  Spring : 3.3.5"
+          echo "-----------------------------------------"
+          if [ -f target/site/jacoco/index.html ]; then
+            MISSED=$(grep -oP 'Total[^%]+?(\d+)%' target/site/jacoco/index.html | tail -1 || echo "see report")
+            echo "  Coverage report available in artifact"
+          fi
+          echo "========================================="
