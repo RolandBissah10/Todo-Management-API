@@ -16,7 +16,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # ── 2. Java runtime ──────────────────────────────────────────────────────
+      # ── 2. Java 23 runtime ───────────────────────────────────────────────────
       - name: Set up JDK 23 (Temurin)
         uses: actions/setup-java@v4
         with:
@@ -28,17 +28,14 @@ jobs:
       - name: Compile
         run: mvn --batch-mode clean compile
 
-      # ── 4. Unit & integration tests ──────────────────────────────────────────
-      - name: Run unit & integration tests
+      # ── 4. Unit & integration tests + JaCoCo coverage report ─────────────────
+      #       jacoco:report is bound to the test phase in pom.xml,
+      #       so no separate report step is needed.
+      - name: Run tests
         run: mvn --batch-mode test
 
-      # ── 5. Coverage report (generated automatically via JaCoCo prepare-agent)─
-      - name: Generate JaCoCo coverage report
-        if: always()
-        run: mvn --batch-mode jacoco:report
-
-      # ── 6. Publish test results as GitHub check ──────────────────────────────
-      - name: Publish test results
+      # ── 5. Upload Surefire test results ──────────────────────────────────────
+      - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -46,7 +43,7 @@ jobs:
           path: target/surefire-reports/
           retention-days: 14
 
-      # ── 7. Publish HTML coverage report as artifact ──────────────────────────
+      # ── 6. Upload JaCoCo HTML coverage report ────────────────────────────────
       - name: Upload coverage report
         if: always()
         uses: actions/upload-artifact@v4
@@ -55,7 +52,7 @@ jobs:
           path: target/site/jacoco/
           retention-days: 14
 
-      # ── 8. Summary ───────────────────────────────────────────────────────────
+      # ── 7. Summary ───────────────────────────────────────────────────────────
       - name: Print build summary
         if: always()
         run: |
@@ -66,9 +63,5 @@ jobs:
           echo "  Commit : ${{ github.sha }}"
           echo "  Java   : 23 (Temurin)"
           echo "  Spring : 3.3.5"
-          echo "-----------------------------------------"
-          if [ -f target/site/jacoco/index.html ]; then
-            MISSED=$(grep -oP 'Total[^%]+?(\d+)%' target/site/jacoco/index.html | tail -1 || echo "see report")
-            echo "  Coverage report available in artifact"
-          fi
+          echo "  JaCoCo : 0.8.12"
           echo "========================================="
