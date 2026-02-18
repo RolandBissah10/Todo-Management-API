@@ -35,6 +35,8 @@ public class TaskController {
         return ResponseEntity.ok(response);
     }
 
+    //    Create Task Endpoint
+
     @PostMapping
     public ResponseEntity<?> createTask(@Valid @RequestBody Task task) {
         logger.info("Creating new task: title={}", task.getTitle());
@@ -50,6 +52,8 @@ public class TaskController {
         }
     }
 
+    //    Get all Tasks Endpoint
+
     @GetMapping
     public ResponseEntity<List<Task>> getAllTasks() {
         logger.debug("Fetching all tasks");
@@ -57,6 +61,8 @@ public class TaskController {
         logger.info("Retrieved {} tasks", tasks.size());
         return ResponseEntity.ok(tasks);
     }
+
+    //    Get task by id Endpoint
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getTaskById(@PathVariable String id) {
@@ -74,6 +80,8 @@ public class TaskController {
                 });
     }
 
+    //    Mark Task Endpoint
+
     @PatchMapping("/{id}/complete")
     public ResponseEntity<?> markTaskComplete(@PathVariable String id) {
         logger.info("Marking task as complete: id={}", id);
@@ -90,6 +98,8 @@ public class TaskController {
                 });
     }
 
+    //    Update Task Endpoint
+
     @PutMapping("/{id}")
     public ResponseEntity<?> updateTask(@PathVariable String id, @Valid @RequestBody Task task) {
         logger.info("Updating task: id={}", id);
@@ -105,6 +115,8 @@ public class TaskController {
                     return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
                 });
     }
+
+//    Delete Task Endpoint
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteTask(@PathVariable String id) {
