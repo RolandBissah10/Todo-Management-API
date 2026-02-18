@@ -23,21 +23,9 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Integration tests for Task API endpoints.
- * Tests the full stack from HTTP request to response.
- *
- * Uses Apache HttpClient 5 via HttpComponentsClientHttpRequestFactory
- * so that PATCH requests are supported (default SimpleClientHttpRequestFactory
- * does not allow PATCH).
- */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class TaskIntegrationTest {
 
-    /**
-     * Supplies a RestTemplate backed by Apache HttpClient 5.
-     * This is picked up by TestRestTemplate automatically.
-     */
     @TestConfiguration
     static class HttpClientConfig {
         @Bean
