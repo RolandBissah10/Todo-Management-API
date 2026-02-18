@@ -9,7 +9,7 @@ A professional RESTful API for task management, built as an Agile & DevOps learn
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - **Java 17** or higher
@@ -47,7 +47,7 @@ open target/site/jacoco/index.html
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 todo-management-api-complete/
@@ -93,19 +93,19 @@ todo-management-api-complete/
 
 ---
 
-## 🎯 Features
+##  Features
 
 ### API Endpoints
 
-| Method | Endpoint | Description | Status |
-|--------|----------|-------------|--------|
-| POST | `/api/tasks` | Create a new task | ✅ |
-| GET | `/api/tasks` | Get all tasks | ✅ |
-| GET | `/api/tasks/{id}` | Get task by ID | ✅ |
-| PUT | `/api/tasks/{id}` | Update a task | ✅ |
-| DELETE | `/api/tasks/{id}` | Delete a task | ✅ |
-| PATCH | `/api/tasks/{id}/complete` | Mark task complete | ✅ |
-| GET | `/api/tasks/health` | Health check | ✅ |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/tasks` | Create a new task |
+| GET | `/api/tasks` | Get all tasks |
+| GET | `/api/tasks/{id}` | Get task by ID |
+| PUT | `/api/tasks/{id}` | Update a task | 
+| DELETE | `/api/tasks/{id}` | Delete a task |
+| PATCH | `/api/tasks/{id}/complete` | Mark task complete |
+| GET | `/api/tasks/health` | Health check |
 
 ### Example API Usage
 
@@ -131,7 +131,7 @@ curl -X PATCH http://localhost:8080/api/tasks/{id}/complete
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ### Technology Stack
 - **Framework:** Spring Boot 3.2.0
@@ -150,7 +150,7 @@ Clean **3-tier architecture**:
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Test Coverage
 - **Unit Tests:** 15 tests
@@ -159,14 +159,14 @@ Clean **3-tier architecture**:
 - **Coverage:** 92% (exceeds 80% requirement)
 
 ### Test Categories
-- ✅ Controller endpoint tests (MockMvc)
-- ✅ Service business logic tests (Mockito)
-- ✅ Full-stack integration tests (@SpringBootTest)
-- ✅ Error handling and edge cases
+- Controller endpoint tests (MockMvc)
+-  Service business logic tests (Mockito)
+-  Full-stack integration tests (@SpringBootTest)
+-  Error handling and edge cases
 
 ---
 
-## 📊 Project Metrics
+##  Project Metrics
 
 ### Sprint Summary
 | Sprint | Story Points | Completed | Rate |
@@ -179,12 +179,12 @@ Clean **3-tier architecture**:
 - **Code Coverage:** 92%
 - **Test Pass Rate:** 100%
 - **Total Commits:** 18
-- **Big-Bang Commits:** 0 ✅
+- **Big-Bang Commits:** 0 
 - **User Stories Completed:** 6/8 (75%)
 
 ---
 
-## 📖 Documentation
+##  Documentation
 
 All project documentation is in the `docs/` folder:
 
@@ -206,23 +206,23 @@ All project documentation is in the `docs/` folder:
 
 ---
 
-## 🎓 Learning Objectives Demonstrated
+##  Learning Objectives Demonstrated
 
-### Agile Methodology ✅
+### Agile Methodology 
 - User stories with acceptance criteria
 - Sprint planning and execution
 - Retrospectives with concrete improvements
 - Iterative development
 - Continuous improvement
 
-### DevOps Practices ✅
+### DevOps Practices 
 - CI/CD pipeline configuration
 - Automated testing (unit + integration)
 - Code coverage reporting
 - Structured logging and monitoring
 - Version control best practices
 
-### Software Engineering ✅
+### Software Engineering 
 - RESTful API design
 - Clean architecture
 - Test-driven development
@@ -231,7 +231,7 @@ All project documentation is in the `docs/` folder:
 
 ---
 
-## 🔧 Development Workflow
+##  Development Workflow
 
 ### Git Commit Convention
 ```
@@ -246,17 +246,17 @@ Detailed explanation
 
 ### Definition of Done
 Every user story must meet:
-- ✅ Code complete and merged
-- ✅ Unit tests written (>80% coverage)
-- ✅ Integration tests added
-- ✅ All tests passing
-- ✅ Code reviewed
-- ✅ API documented
-- ✅ Merged to main branch
+-  Code complete and merged
+-  Unit tests written (>80% coverage)
+-  Integration tests added
+-  All tests passing
+-  Code reviewed
+-  API documented
+-  Merged to main branch
 
 ---
 
-## 🚀 Deployment
+##  Deployment
 
 ### Build JAR
 ```bash
@@ -273,7 +273,7 @@ docker run -p 8080:8080 todo-api
 
 ---
 
-## 📈 Future Enhancements
+## Future Enhancements
 
 ### Planned Features
 - [ ] Database persistence (H2/PostgreSQL)
@@ -286,7 +286,7 @@ docker run -p 8080:8080 todo-api
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 This is an educational project demonstrating Agile & DevOps practices. For learning purposes:
 1. Follow the Definition of Done
@@ -296,22 +296,21 @@ This is an educational project demonstrating Agile & DevOps practices. For learn
 
 ---
 
-## 📝 License
+## License
 
 This project is created for educational purposes as part of an Agile & DevOps course.
 
 ---
 
-## 👨‍💻 Author
+## Author
 
-**[Your Name]**  
+**Francis Roland Bissah**  
 Course: Agile & DevOps in Practice  
-Institution: [Your Institution]  
 Date: February 2026
 
 ---
 
-## 📞 Support
+##  Support
 
 For questions about this project:
 - Review the documentation in `docs/`
@@ -320,7 +319,7 @@ For questions about this project:
 
 ---
 
-## 🎯 Project Grade Self-Assessment
+##  Project Grade Self-Assessment
 
 | Criterion | Weight | Score | Evidence |
 |-----------|--------|-------|----------|
@@ -334,7 +333,7 @@ For questions about this project:
 
 ---
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - Spring Boot team for excellent framework
 - Anthropic for learning resources
@@ -343,5 +342,6 @@ For questions about this project:
 ---
 
 **Ready to explore?** Start by reviewing the `docs/PROJECT_SUMMARY.md` for a complete overview!
-#   T o d o - M a n a g e m e n t - A P I  
+#   T o d o - M a n a g e m e n t - A P I 
+ 
  
