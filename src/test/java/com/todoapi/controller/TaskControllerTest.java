@@ -91,6 +91,7 @@ class TaskControllerTest {
                 .andExpect(jsonPath("$.length()").value(2));
     }
 
+
     @Test
     void testGetAllTasks_Empty() throws Exception {
         when(taskService.getAllTasks()).thenReturn(Collections.emptyList());
@@ -98,6 +99,7 @@ class TaskControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(0));
     }
+
 
     @Test
     void testGetTaskById_Success() throws Exception {
@@ -108,6 +110,7 @@ class TaskControllerTest {
                 .andExpect(jsonPath("$.title").value("Buy groceries"));
     }
 
+
     @Test
     void testGetTaskById_NotFound() throws Exception {
         when(taskService.getTaskById("999")).thenReturn(Optional.empty());
@@ -115,6 +118,7 @@ class TaskControllerTest {
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.error").value("Task not found"));
     }
+
 
     @Test
     void testMarkTaskComplete_Success() throws Exception {
@@ -129,6 +133,7 @@ class TaskControllerTest {
                 .andExpect(jsonPath("$.status").value("completed"));
     }
 
+
     @Test
     void testMarkTaskComplete_NotFound() throws Exception {
         when(taskService.markTaskComplete("999")).thenReturn(Optional.empty());
@@ -136,6 +141,7 @@ class TaskControllerTest {
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.error").value("Task not found"));
     }
+
 
     @Test
     void testUpdateTask_Success() throws Exception {
@@ -155,6 +161,7 @@ class TaskControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.title").value("Updated Title"));
     }
+
 
     @Test
     void testUpdateTask_NotFound() throws Exception {
