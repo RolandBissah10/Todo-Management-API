@@ -1,4 +1,4 @@
-# Task/Todo Management API - Complete Project
+### Task/Todo Management API - Complete Project
 
 [![Java](https://img.shields.io/badge/Java-17-orange.svg)](https://www.oracle.com/java/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.0-brightgreen.svg)](https://spring.io/projects/spring-boot)
@@ -341,7 +341,3 @@ For questions about this project:
 
 ---
 
-**Ready to explore?** Start by reviewing the `docs/PROJECT_SUMMARY.md` for a complete overview!
-#   T o d o - M a n a g e m e n t - A P I 
- 
- 
